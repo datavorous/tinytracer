@@ -2,6 +2,7 @@ from .hits import HitRecord
 from .ray import Ray
 import math
 from .vec import Vec3, Color
+import random
 
 
 def ray_color(ray, world, depth):
@@ -12,6 +13,10 @@ def ray_color(ray, world, depth):
     if depth <= 0:
         return Color(0, 0, 0)
         # btw changing this to white gives a cool light like effect
+
+    if depth < 40:
+        if random.random() > 0.9:
+            return Color(0, 0, 0)
 
     # goto hits.py for more info
     if world.hit(ray, 0.001, float("inf"), hit_record):
@@ -85,9 +90,12 @@ def ray_color(ray, world, depth):
 
     # this does the sky gradient
     # directly copied from ray tracing in one weekend book
-    unit_direction = ray.direction.unit_vector()
+    if not hasattr(ray.direction, "_unit_cache"):
+        ray.direction._unit_cache = ray.direction.unit_vector()
+    # unit_direction = ray.direction.unit_vector()
+    unit_direction = ray.direction._unit_cache
     t = 0.5 * (unit_direction.y + 1.0)
-    return (1.0 - t) * Color(0.7, 0.7, 0.7) + t * Color(0.3, 0.3, 0.9)
+    return (1.0 - t) * Color(0.7, 0.7, 0.7) + t * Color(0.3, 0.3, 1)
 
 
 def clamp(x, min_val, max_val):
@@ -113,3 +121,15 @@ def write_color(pixel_color, samples_per_pixel):
 
 def reflect(v, n):
     return v - 2 * v.dot(n) * n
+
+
+def refract(uv, n, etai_over_etat):
+    # refracts a unit vector 'uv' through a surface with normal 'n' based on the ratio of refractive indices 'etai_over_etat'
+    cos_theta = min(-uv.dot(n), 1.0)
+
+    # perpendicular component of the refracted ray
+    r_out_perp = etai_over_etat * (uv + cos_theta * n)
+    # parallel component
+    r_out_parallel = -math.sqrt(abs(1.0 - r_out_perp.length_squared())) * n
+
+    return r_out_perp + r_out_parallel

@@ -3,6 +3,7 @@ from .vec import Vec3
 # hitrecord holds hit details
 # hittable list manages all the objects and finds the CLOSEST hit
 
+
 class HitRecord:
     def __init__(self):
         self.p = Vec3()
