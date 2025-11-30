@@ -1,27 +1,31 @@
-# tinytracer
+# TinyTracer
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
-<img src="output/demos/demo4.png" width="800">
-<img src="output/demos/demo1.png" width="800">
-<img src="output/demos/demo3.png" width="800">
-<img src="output/demos/demo2.png" width="800">
+| Dielectrics | Metal and Light |
+|--------|--------|
+| <img src="output/demos/demo4.png" width="400"> | <img src="output/demos/demo1.png" width="400"> |
 
-## recent changes
+| Quadrilaterals | Diffused Materials |
+|--------|--------|
+| <img src="output/demos/demo3.png" width="400"> | <img src="output/demos/demo2.png" width="400"> |
+
+
+## Recent Changes
 
 1. added multiprocessing to speed up rendering
 2. added dielectric material type (for glass, water, etc.)
 3. implemented caching for minor speed-ups
 
-## todo 
+## Todo 
 
-[ ] BVH implementation
-[ ] .obj model parser (atleast render Utah teapot)
-[ ] possible C++ rewrite?
+- [ ] BVH implementation
+- [ ] `.obj` model parser (atleast render Utah teapot)
+- [ ] possible C++ rewrite?
 
-## foreword
+## Foreword
 
 A path tracer is a type of rendering program or algorithm that generates images by simulating the paths of light rays as they bounce around a scene, capturing realistic lighting, shadows, reflections, and refractions.
 
@@ -33,7 +37,7 @@ Sphere and Quadrilateral have been implemented till now, and four material types
 Formatted with `black`.
 
 
-### installation
+### Installation
 
 Have `uv` installed beforehand.
 
@@ -45,12 +49,12 @@ uv run main.py
 
 The image generated will be of `.ppm` format.
 
-## references
+## References
 
 > [!NOTE]
 > Read [this](https://www.reddit.com/r/GraphicsProgramming/comments/1ej5ffo/raytracing_in_one_weekend_not_understanding_the/) if you are having some trouble with understanding how the `viewport` works.
 
 Check out [explained.md](explained.md) for some rudimentary explanation from my side.
 
-**Resource**: *[Ray Tracing in One Weekend](https://raytracing.github.io/)* (Part 1 and Part 2)
+Book that I followed: *[Ray Tracing in One Weekend](https://raytracing.github.io/)* (Part 1 and Part 2)
 
