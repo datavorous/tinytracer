@@ -4,7 +4,7 @@
 
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
-<img src="output/demos/demo4.png" width="400">
+<img src="https://raw.githubusercontent.com/datavorous/datavorous/refs/heads/main/gsbuxq.png" width="400">
 <img src="output/demos/demo1.png" width="400">
 <img src="output/demos/demo3.png" width="400">
 <img src="output/demos/demo2.png" width="400">
@@ -28,7 +28,7 @@ A path tracer is a type of rendering program or algorithm that generates images 
 Sphere and Quadrilateral have been implemented till now, and four material types: Lambertian Diffuse, Metal, Dielectric and LightEmissive Material.
 
 > [!NOTE]
-> The first 2 photos are so noisy because I had kept `sampling = 30`, to reduce the rendering time.
+> Some of the demos are so noisy because I had kept `sampling = 30`, to reduce the rendering time.
 
 Formatted with `black`.
 
