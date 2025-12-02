@@ -1,7 +1,0 @@
-[project]
-name = "tinytracer"
-version = "0.1.0"
-description = "a tiny path tracer written in python"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
