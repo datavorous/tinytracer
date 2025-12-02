@@ -1,5 +1,5 @@
-I don't want to bother myself by typing the same thing again, so just see my scribbles below:
+TODO: convert the scribbles into properly documented `.md` files.
 
-<img src="media/1.jpg">
-<img src="media/2.jpg">
-<img src="media/3.jpg">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
