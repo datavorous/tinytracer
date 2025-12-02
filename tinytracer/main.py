@@ -35,7 +35,7 @@ def main():
     samples_per_pixel = 5
     max_depth = 5
 
-    # Validated samples_per_pixel to prevent division by zero, if zero/negative it prompts to use a positive integer
+    
     if samples_per_pixel <= 0:
         raise ValueError(
             f"samples_per_pixel must be a positive integer, got {samples_per_pixel}"
