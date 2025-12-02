@@ -38,10 +38,17 @@ Implemented so far:
 ```bash
 git clone https://github.com/datavorous/tinytracer.git
 cd tinytracer
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python main.py
+
+python3 -m venv .venv
+source .venv/bin/activate # Linux/macOS
+# .venv\Scripts\activate # Windows
+
+pip install -e .
+pip install uv pytest
+
+uv run tinytracer/main.py
+
+uv run pytest
 ```
 
 > The generated image will be in `.ppm` format, inside the `output` folder.

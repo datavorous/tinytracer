@@ -2,8 +2,10 @@ from core.camera import Camera
 from core.vec import Vec3, Color
 from core.hits import HittableList
 from core.utils import ray_color, write_color
+
 # from core.ray import Ray
 from shapes.sphere import Sphere
+
 # from shapes.quad import Quad
 from shapes.material import Lambertian, EmissiveMaterial, Metal, Dielectric
 
@@ -91,7 +93,7 @@ def main():
     for i, j, r, g, b in results:
         framebuffer[image_height - 1 - j][i] = (r, g, b)
 
-    with open("tinytracer/output/image_test.ppm", "wb") as f:
+    with open("tinytracer/output/image.ppm", "wb") as f:
         f.write(f"P6\n{image_width} {image_height}\n255\n".encode())
         for row in framebuffer:
             for r, g, b in row:

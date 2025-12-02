@@ -12,35 +12,43 @@ We're excited to have you contribute to this path tracing project.
 
 ### Setting Up Local Environment
 
-1. **Fork the repository**  
+1. **Fork the repository**
    Click the "Fork" button at the top right of this repository.
 
 2. **Clone your fork**
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/tinytracer.git
+git clone https://github.com/YOUR_NAME/tinytracer.git
 cd tinytracer
-````
+```
 
 3. **Create a virtual environment** (recommended)
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python3 -m venv .venv
+# Activate the environment
+source .venv/bin/activate # Linux/macOS
+# .venv\Scripts\activate # Windows
 ```
 
-4. **Install dependencies**
+4. **Install the package and dependencies**
 
 ```bash
-pip install uv
+pip install -e .
+pip install uv pytest
 ```
 
 5. **Test the setup**
 
 ```bash
+# Run the path tracer
 uv run tinytracer/main.py
+
+# Run tests to verify everything works
+uv run pytest
 ```
 
-This should generate `output/image.ppm`.
+This should generate `tinytracer/output/image.ppm`.
 
 ## How to Contribute
 
