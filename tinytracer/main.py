@@ -36,7 +36,8 @@ def main():
     max_depth = 5
     world = HittableList()
     pixels = []
-
+    if samples_per_pixel <= 0:
+        raise ValueError("Samples per pixel must be a positive integer")
     world.add(Sphere(Vec3(0, -100.5, 0), 100, Lambertian(Color(0.27, 0.28, 0.26))))
     world.add(Sphere(Vec3(0, 0, -2), 0.7, Dielectric(1.5)))
     world.add(Sphere(Vec3(0, 0, -2), -0.6, Dielectric(1.5)))
@@ -105,7 +106,6 @@ if __name__ == "__main__":
     start = time.time()
     main()
     print(f"Render time: {time.time() - start:.2f}s")
-
 
 '''
     # the main work starts exactly here:
