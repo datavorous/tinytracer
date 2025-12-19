@@ -33,6 +33,12 @@ class Vec3:
         """
         self.x, self.y, self.z = x, y, z
 
+    def __repr__(self):
+        return f"Vec3(x={self.x}, y={self.y}, z={self.z})"
+
+    def __str__(self):
+        return f"({self.x}, {self.y}, {self.z})"
+
     def __add__(self, other):
         """Return the vector sum `self + other`.
 
