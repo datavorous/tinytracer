@@ -1,20 +1,19 @@
-from core.camera import Camera
-from core.vec import Vec3, Color
-from core.hits import HittableList
-from core.utils import ray_color, write_color
+from tinytracer.core.camera import Camera
+from tinytracer.core.vec import Vec3, Color
+from tinytracer.core.hits import HittableList
+from tinytracer.core.utils import ray_color, write_color
 
 # from core.ray import Ray
-from shapes.sphere import Sphere
+from tinytracer.shapes.sphere import Sphere
 
 # from shapes.quad import Quad
-from shapes.material import Lambertian, EmissiveMaterial, Metal, Dielectric
+from tinytracer.shapes.material import Lambertian, EmissiveMaterial, Metal, Dielectric
 
 import random
 import math
 import multiprocessing
 import time
-import numpy as np
-from PIL import Image
+
 import argparse
 from pathlib import Path
 
@@ -123,9 +122,9 @@ def main(args):
     outDir = "output/image.ppm"
     if args.output == "DEFAULT":
         if args.format == "png":
-            outDir = "tinytracer/output/image.png"
+            outDir = "output/image.png"
         else:  # needs to be changed if adding more compatibility like jpeg or smth
-            outDir = "tinytracer/output/image.ppm"
+            outDir = "output/image.ppm"
     outPath = Path(outDir)
     outPath.parent.mkdir(parents=True, exist_ok=True)  # making the folder
 
@@ -187,6 +186,12 @@ def main(args):
 
     if args.format == "png":
         # new PIL: for png
+        try:
+            import numpy as np
+            from PIL import Image
+        except ImportError as e:
+            raise RuntimeError("PNG output requires numpy and Pillow (PIL) to be installed") from e
+
         img_array = np.array(framebuffer, dtype=np.uint8)
         img = Image.fromarray(img_array, "RGB")
         img.save(outPath)

@@ -1,6 +1,6 @@
-from core.vec import random_unit_vector
-from core.ray import Ray
-from core.utils import *
+from tinytracer.core.vec import random_unit_vector, Color, Vec3
+from tinytracer.core.ray import Ray
+from tinytracer.core.utils import *
 import random
 
 
