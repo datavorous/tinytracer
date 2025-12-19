@@ -120,12 +120,13 @@ def main(args):
     max_depth = args.depth
     world = HittableList()
     pixels = []
-    outDir = "output/image.ppm"
     if args.output == "DEFAULT":
         if args.format == "png":
             outDir = "tinytracer/output/image.png"
         else:  # needs to be changed if adding more compatibility like jpeg or smth
             outDir = "tinytracer/output/image.ppm"
+    else:
+        outDir = args.output
     outPath = Path(outDir)
     outPath.parent.mkdir(parents=True, exist_ok=True)  # making the folder
 
