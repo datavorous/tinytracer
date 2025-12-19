@@ -2,7 +2,7 @@
 
 This module provides a lightweight 3D vector class used by the renderer and
 some utility functions for generating random directions. The :class:`Vec3`
-object is used both for geometry and as the ``Color`` alias for RGB values.
+object is used both for geometry and as the `Color` alias for RGB values.
 """
 
 from random import uniform
@@ -12,7 +12,7 @@ from math import sqrt
 class Vec3:
     """A 3D vector for geometry and color computations.
 
-    Represents a vector with float components (``x``, ``y``, ``z``) and
+    Represents a vector with float components (`x`, `y`, `z`) and
     provides basic vector operations used by the renderer:
     addition, subtraction, scalar and component-wise multiplication,
     dot/cross products, length/normalization, and component-wise clamping.
@@ -34,7 +34,7 @@ class Vec3:
         self.x, self.y, self.z = x, y, z
 
     def __add__(self, other):
-        """Return the vector sum ``self + other``.
+        """Return the vector sum `self + other`.
 
         Args:
             other (Vec3): The vector to add.
@@ -45,7 +45,7 @@ class Vec3:
         return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
 
     def __sub__(self, other):
-        """Return the vector difference ``self - other``.
+        """Return the vector difference `self - other`.
 
         Args:
             other (Vec3): The vector to subtract.
@@ -70,26 +70,26 @@ class Vec3:
         return Vec3(self.x * t, self.y * t, self.z * t)
 
     def __rmul__(self, t):
-        """Support right-hand scalar multiplication (``scalar * Vec3``)."""
+        """Support right-hand scalar multiplication (`scalar * Vec3`)."""
         return self * t
 
     def __truediv__(self, t):
-        """Return ``self`` divided by scalar ``t``.
+        """Return `self` divided by scalar `t`.
 
         Args:
             t (float): Divisor.
 
         Returns:
-            Vec3: Scaled vector (``self * (1.0 / t)``).
+            Vec3: Scaled vector (`self * (1.0 / t)`).
         """
         return self * (1.0 / t)
 
     def __neg__(self):
-        """Return the negation of this vector (``-self``)."""
+        """Return the negation of this vector (`-self`)."""
         return Vec3(-self.x, -self.y, -self.z)
 
     def dot(self, other):
-        """Compute the dot product with ``other``.
+        """Compute the dot product with `other`.
 
         Args:
             other (Vec3): Other vector.
@@ -108,15 +108,15 @@ class Vec3:
         return sqrt(self.length_squared())
 
     def unit_vector(self):
-        """Return a unit (normalized) vector in the same direction as ``self``.
+        """Return a unit (normalized) vector in the same direction as `self`.
 
         Returns:
-            Vec3: Unit vector (``self / length``).
+            Vec3: Unit vector (`self / length`).
         """
         return self / self.length()
 
     def cross(self, other):
-        """Compute the cross product with ``other``.
+        """Compute the cross product with `other`.
 
         Args:
             other (Vec3): Other vector.
@@ -131,19 +131,19 @@ class Vec3:
         )
 
     def near_zero(self):
-        """Return ``True`` if the vector is close to zero in all components.
+        """Return `True` if the vector is close to zero in all components.
 
         This tests whether each component is smaller than a small threshold
-        (``1e-8``) to account for floating-point imprecision.
+        (`1e-8`) to account for floating-point imprecision.
 
         Returns:
-            bool: ``True`` if the vector is approximately zero.
+            bool: `True` if the vector is approximately zero.
         """
         s = 1e-8
         return abs(self.x) < s and abs(self.y) < s and abs(self.z) < s
 
     def clamp(self, min_val, max_val):
-        """Clamp each component to the ``[min_val, max_val]`` range.
+        """Clamp each component to the `[min_val, max_val]` range.
 
         Args:
             min_val (float): Minimum allowed component value.
@@ -172,13 +172,13 @@ def random_unit_vector():
 
 
 def random_in_hemisphere(normal):
-    """Return a random unit vector in the hemisphere defined by ``normal``.
+    """Return a random unit vector in the hemisphere defined by `normal`.
 
     Args:
         normal (Vec3): The hemisphere's outward normal vector.
 
     Returns:
-        Vec3: Random unit vector in the same hemisphere as ``normal``.
+        Vec3: Random unit vector in the same hemisphere as `normal`.
     """
     in_unit_sphere = random_unit_vector()
     if in_unit_sphere.dot(normal) > 0.0:
