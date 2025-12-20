@@ -56,7 +56,7 @@ def parse_args():
     )
     # -1 for now, default will be handled in initializiation (to ensure entering any two of [width,height,ratio] works)
     parser.add_argument(
-        "--samples", type=int, default=200, help="Number of Samples per pixel"
+        "--samples", type=int, default=1000, help="Number of Samples per pixel"
     )
 
     parser.add_argument(
@@ -93,8 +93,8 @@ def main(args):
     if args.samples <= 0:
         raise ValueError(
             "Samples per pixel must be a positive integer."
-        )  # input validation 
-        
+        )  # input validation
+
     aspect_ratio = 16.0 / 9.0
 
     # initialization of parameters from command line arguments
@@ -147,6 +147,8 @@ def main(args):
         Vec3(0, 1, 0),
         40,
         aspect_ratio,
+        defocus_angle=5.0,  # added defocus angle for depth of field
+        focus_dist=3.4,  # added focus distance for depth of field
     )
 
     print(

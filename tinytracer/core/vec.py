@@ -195,4 +195,12 @@ def random_in_hemisphere(normal):
         return -in_unit_sphere
 
 
+def random_in_unit_disk():
+    # generate a random point in unit disk in xy plane
+    while True:
+        p = Vec3(uniform(-1, 1), uniform(-1, 1), 0)
+        if p.length_squared() < 1:
+            return p.unit_vector()
+
+
 Color = Vec3

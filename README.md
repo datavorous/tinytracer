@@ -20,10 +20,12 @@ This project is part of **[Winter of Open Source](https://winter-of-open-source.
 
 ## Demo Images
 
-<img src="tinytracer/output/demos/demo5.png" width="500">
-<img src="tinytracer/output/demos/demo1.png" width="500">
+<img src="tinytracer/output/demos/demo1.png" width="500">   
 <img src="tinytracer/output/demos/demo3.png" width="500">
 <img src="tinytracer/output/demos/demo2.png" width="500">
+<img src="tinytracer/output/demos/demo5.png" width="500">
+<img src="tinytracer/output/demos/demo6.png" width="500">
+
 
 > Some demos may look noisy due to low sampling for faster renders.
 
