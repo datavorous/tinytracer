@@ -4,9 +4,13 @@ This module provides a lightweight 3D vector class used by the renderer and
 some utility functions for generating random directions. The :class:`Vec3`
 object is used both for geometry and as the `Color` alias for RGB values.
 """
+from __future__ import annotations
+from typing import Union
 
 from random import uniform
 from math import sqrt
+
+
 
 
 class Vec3:
@@ -23,7 +27,9 @@ class Vec3:
         z (float): Z component.
     """
 
-    def __init__(self, x=0, y=0, z=0):
+
+    def __init__(self, x: float, y: float, z: float) -> None:
+    
         """Create a new :class:`Vec3`.
 
         Args:
@@ -33,7 +39,8 @@ class Vec3:
         """
         self.x, self.y, self.z = x, y, z
 
-    def __add__(self, other):
+
+    def __add__(self, other: Vec3) -> Vec3:
         """Return the vector sum `self + other`.
 
         Args:
@@ -45,6 +52,7 @@ class Vec3:
         return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
 
     def __sub__(self, other):
+
         """Return the vector difference `self - other`.
 
         Args:
@@ -55,7 +63,10 @@ class Vec3:
         """
         return Vec3(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, t):
+    
+
+def __mul__(self, other: Union[float, Vec3]) -> Vec3:
+    
         """Multiply by a scalar or component-wise by another :class:`Vec3`.
 
         Args:
@@ -65,13 +76,14 @@ class Vec3:
         Returns:
             Vec3: Result of multiplication.
         """
-        if isinstance(t, Vec3):
-            return Vec3(self.x * t.x, self.y * t.y, self.z * t.z)
-        return Vec3(self.x * t, self.y * t, self.z * t)
+        if isinstance(other, Vec3):
+            return Vec3(self.x * other.x, self.y * other.y, self.z * other.z)
+        return Vec3(self.x * other, self.y * other, self.z * other)
 
-    def __rmul__(self, t):
+
+    def __rmul__(self, scalar: float) -> Vec3:
         """Support right-hand scalar multiplication (`scalar * Vec3`)."""
-        return self * t
+        return Vec3(self.x * scalar, self.y * scalar, self.z * scalar)
 
     def __truediv__(self, t):
         """Return `self` divided by scalar `t`.
@@ -88,7 +100,8 @@ class Vec3:
         """Return the negation of this vector (`-self`)."""
         return Vec3(-self.x, -self.y, -self.z)
 
-    def dot(self, other):
+    def dot(self, other: Vec3) -> float:
+        """Dot product returns a scalar"""
         """Compute the dot product with `other`.
 
         Args:
@@ -99,9 +112,9 @@ class Vec3:
         """
         return self.x * other.x + self.y * other.y + self.z * other.z
 
-    def length_squared(self):
-        """Return the squared length (magnitude) of the vector."""
-        return self.dot(self)
+    def length(self) -> float:  
+        """Return the squared length (magnitude) of the vector."""       
+        return (self.x**2 + self.y**2 + self.z**2) ** 0.5
 
     def length(self):
         """Return the Euclidean length (magnitude) of the vector."""
@@ -115,7 +128,8 @@ class Vec3:
         """
         return self / self.length()
 
-    def cross(self, other):
+    def cross(self, other: Vec3) -> Vec3:
+
         """Compute the cross product with `other`.
 
         Args:
@@ -130,7 +144,8 @@ class Vec3:
             self.x * other.y - self.y * other.x,
         )
 
-    def near_zero(self):
+    
+    def near_zero(self) -> bool:
         """Return `True` if the vector is close to zero in all components.
 
         This tests whether each component is smaller than a small threshold
@@ -142,7 +157,7 @@ class Vec3:
         s = 1e-8
         return abs(self.x) < s and abs(self.y) < s and abs(self.z) < s
 
-    def clamp(self, min_val, max_val):
+    def clamp(self, min_val: float, max_val: float) -> Vec3:
         """Clamp each component to the `[min_val, max_val]` range.
 
         Args:
@@ -159,7 +174,7 @@ class Vec3:
         )
 
 
-def random_unit_vector():
+def random_unit_vector() -> Vec3:
     """Return a random unit vector sampled uniformly inside the unit sphere.
 
     Uses rejection sampling to pick points inside the unit sphere and returns
@@ -171,7 +186,7 @@ def random_unit_vector():
             return p.unit_vector()
 
 
-def random_in_hemisphere(normal):
+def random_in_hemisphere(normal: Vec3) -> Vec3:
     """Return a random unit vector in the hemisphere defined by `normal`.
 
     Args:
