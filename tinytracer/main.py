@@ -93,8 +93,8 @@ def main(args):
     if args.samples <= 0:
         raise ValueError(
             "Samples per pixel must be a positive integer."
-        )  # input validation 
-        
+        )  # input validation
+
     aspect_ratio = 16.0 / 9.0
 
     # initialization of parameters from command line arguments

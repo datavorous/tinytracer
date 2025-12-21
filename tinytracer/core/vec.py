@@ -65,7 +65,7 @@ class Vec3:
 
     
 
-def __mul__(self, other: Union[float, Vec3]) -> Vec3:
+    def __mul__(self, other: Union[float, Vec3]) -> Vec3:
     
         """Multiply by a scalar or component-wise by another :class:`Vec3`.
 
@@ -120,6 +120,7 @@ def __mul__(self, other: Union[float, Vec3]) -> Vec3:
         """Return the Euclidean length (magnitude) of the vector."""
         return sqrt(self.length_squared())
 
+    
     def unit_vector(self):
         """Return a unit (normalized) vector in the same direction as `self`.
 
